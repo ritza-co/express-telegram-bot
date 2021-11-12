@@ -18,39 +18,21 @@ expressApp.get("/", (req, res) => {
 
 bot.command('start', ctx => {
   console.log(ctx.from)
-  bot.telegram.sendMessage(ctx.chat.id, 'Hello there! Welcome to the Code Capsules telegram bot.\nI respond to /weather and /currency. Please try them.', {
+  bot.telegram.sendMessage(ctx.chat.id, 'Hello there! Welcome to the Code Capsules telegram bot.\nI respond to /ethereum. Please try it', {
   })
 })
 
-bot.command('currency', ctx => {
-  var rates;
+bot.command('ethereum', ctx => {
+  var rate;
   console.log(ctx.from)
-  axios.get(`https://openexchangerates.org/api/latest.json?app_id=${process.env.EXCHANGE_TOKEN}&symbols=CAD%2CZAR%2CEUR`)
+  axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd`)
   .then(response => {
     console.log(response.data)
-    rates = response.data.rates
-    const message = `Hello, today the USD exchange rates are as follows:\n \nUSD -> ZAR: ${rates.ZAR}\nUSD -> EUR: ${rates.EUR}\nUSD -> CAD: ${rates.CAD}`
+    rate = response.data.ethereum
+    const message = `Hello, today the ethereum price is ${rate.usd}USD`
     bot.telegram.sendMessage(ctx.chat.id, message, {
     })
   })
-})
-
-bot.command('weather', ctx => {
-  const params = {
-    access_key: process.env.WEATHER_TOKEN,
-    query: 'Cape Town'
-  }
-  
-  axios.get('http://api.weatherstack.com/current', {params})
-    .then(response => {
-      const apiResponse = response.data;
-      console.log(apiResponse)
-      const message = `Hello, the current temperature in ${apiResponse.location.name} is ${apiResponse.current.temperature}℃`
-      bot.telegram.sendMessage(ctx.chat.id, message, {
-      })
-    }).catch(error => {
-      console.log(error);
-    });
 })
 
 expressApp.listen(port, () => console.log(`Listening on ${port}`));

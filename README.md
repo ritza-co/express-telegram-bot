@@ -1,4 +1,4 @@
-# DevTools - Example Express JS Project
+# Example Express JS Telegram Bot
 
-This repo contains a basic express app to showcase deploying to DevTools.
+This repo contains a basic express telegram bot that responds with weather and exchange rate data.
 

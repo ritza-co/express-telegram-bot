@@ -10,7 +10,7 @@ const { Telegraf } = require('telegraf');
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 expressApp.use(bot.webhookCallback('/secret-path'))
-bot.telegram.setWebhook('https://server.tld:8443/secret-path')
+bot.telegram.setWebhook('https://express-telegram-bot-rauixp.codecapsules.co.za/secret-path')
 
 expressApp.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + '/index.html'));

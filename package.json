@@ -1,0 +1,17 @@
+{
+  "name": "example-express-js",
+  "version": "1.0.0",
+  "description": "Example Express JS Project deployed to DevTools",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DevTools",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "express": "4.17.1",
+    "telegraf": "^4.4.2"
+  }
+}

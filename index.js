@@ -5,6 +5,7 @@ const path = require("path")
 const port = process.env.PORT || 3000;
 expressApp.use(express.static('static'))
 expressApp.use(express.json());
+require('dotenv').config();
 
 const { Telegraf } = require('telegraf');
 
